@@ -76,7 +76,7 @@ def get_version(filename='kivy/version.py'):
 
 MIN_CYTHON_STRING = '0.23'
 MIN_CYTHON_VERSION = LooseVersion(MIN_CYTHON_STRING)
-MAX_CYTHON_STRING = '0.28.2'
+MAX_CYTHON_STRING = '0.28.3'
 MAX_CYTHON_VERSION = LooseVersion(MAX_CYTHON_STRING)
 CYTHON_UNSUPPORTED = (
     # ref https://github.com/cython/cython/issues/1968
@@ -1084,7 +1084,6 @@ if not build_examples:
             'Operating System :: POSIX :: BSD :: FreeBSD',
             'Operating System :: POSIX :: Linux',
             'Programming Language :: Python :: 2.7',
-            'Programming Language :: Python :: 3.3',
             'Programming Language :: Python :: 3.4',
             'Programming Language :: Python :: 3.5',
             'Programming Language :: Python :: 3.6',
@@ -1103,7 +1102,12 @@ if not build_examples:
             'Topic :: Software Development :: User Interfaces'],
         dependency_links=[
             'https://github.com/kivy-garden/garden/archive/master.zip'],
-        install_requires=['Kivy-Garden>=0.1.4', 'docutils', 'pygments'],
+        install_requires=[
+            'Kivy-Garden>=0.1.4', 'docutils', 'pygments'
+        ],
+        extra_requires={
+            'tuio': ['oscpy']
+        },
         setup_requires=[
             'cython>=' + MIN_CYTHON_STRING
         ] if not skip_cython else [])
